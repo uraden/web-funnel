@@ -43,3 +43,18 @@
 .read-the-docs {
   color: #888;
 }
+
+.start-btn {
+  background: radial-gradient(82.93% 164.88% at 109.93% 50.25%, #C430F4 0%, #F848B3 46.18%, #F5884E 100%),
+radial-gradient(115.67% 362.84% at -15.67% 105.54%, #6123CA 4.64%, rgba(234, 92, 168, 0) 100%),
+linear-gradient(0deg, #D944BE, #D944BE),
+linear-gradient(102.08deg, #F9C674 5.11%, #E964C4 36.18%, #FA62B7 58.8%, #9C6FFF 91.27%);
+border: 1px solid #D944BE;
+}
+
+/* remove border on active */
+
+.start-btn:active {
+  border: none !important;
+}
+
