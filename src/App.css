@@ -3,7 +3,7 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-  width: 500px;
+  width: 650px;
   /* height full */
   min-height: 100vh;
 }
@@ -61,3 +61,21 @@ border: 1px solid #D944BE;
 
 
 
+.steps-dashed .ant-steps-item-process .ant-steps-item-icon {
+  border-style: dashed;
+}
+
+.steps-dashed .ant-steps-item-wait .ant-steps-item-icon {
+  border-style: dashed;
+}
+
+
+.form-inpt {
+  width: 400px;
+  height: 60px;
+  background-color: transparent !important;
+}
+
+.ant-form-item-explain-error {
+  color: #ffffff !important;
+}
