@@ -1,6 +1,6 @@
 function SignUp() {
   return (
-    <div className="flex flex-col items-center h-screen">
+    <div className="flex flex-col items-center">
       <div className="relative h-[400px] mb-[40px]">
         <img
           src="https://placehold.jp/150x150.png"
@@ -27,7 +27,9 @@ function SignUp() {
         people
       </div>
       <div>
-        <button className="bg-[#e98dcf] text-[#FFFFFF] text-[18px] leading-[21px] font-bold py-[20px] px-[19px] mt-[20px] rounded-[40px] w-[302px] start-btn">
+        <button 
+          onClick={() => window.location.href = '/form'}
+          className="bg-[#e98dcf] text-[#FFFFFF] text-[18px] leading-[21px] font-bold py-[20px] px-[19px] mt-[20px] rounded-[40px] w-[302px] start-btn">
         Let`s start
                 </button>
       </div>

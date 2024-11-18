@@ -52,9 +52,12 @@ linear-gradient(102.08deg, #F9C674 5.11%, #E964C4 36.18%, #FA62B7 58.8%, #9C6FFF
 border: 1px solid #D944BE;
 }
 
-/* remove border on active */
 
-.start-btn:active {
-  border: none !important;
+
+.start-btn:active, .start-btn:hover, .start-btn:focus, .prev-btn:active, .prev-btn:hover, .prev-btn:focus {
+  border: 1px solid #D944BE !important;
+  outline: none;
 }
+
+
 
