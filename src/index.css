@@ -34,11 +34,11 @@ body {
   min-height: 100vh;
   background: linear-gradient(
     to bottom right,
-    #231B24 0%, /* top left */
-    #321E3D 15%, /* middle left */
-    #B1517B 50%, /* bottom left */
-    #B1517B 75%, /* middle right */
-    #231B24 100% /* top right */
+    #231B24 0%, 
+    #321E3D 15%,
+    #B1517B 50%,
+    #B1517B 75%,
+    #231B24 100%
   );;
 }
 
