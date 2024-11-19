@@ -84,10 +84,26 @@ border: 1px solid #D944BE;
   height: 60px;
   background-color: transparent !important;
   border: 1px solid #ffffff !important;
-  border-radius: 8px;
+  border-radius: 30px;
   padding: 0 1rem;
+  outline: none;
 }
+
+
+
+
 
 .ant-form-item-explain-error {
   color: #ffffff !important;
+}
+
+.signup-form {
+  backdrop-filter: blur(30px);
+  color: #ffffff;
+  border-radius: 40px;
+}
+
+
+.start-btn-dark {
+ background-color: #4F4F4F !important;
 }

@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Wrapper from "./layout/index";
 import Home from "./pages/Home/index";
 import Form from "./pages/Form/index";
+import SignUp from './pages/SignUp';
 
 function App() {  
   const router = createBrowserRouter([
@@ -20,6 +21,14 @@ function App() {
       element: (
         <Wrapper>
           <Form />
+        </Wrapper>
+      ),
+    },
+    {
+      path: "/signup",
+      element: (
+        <Wrapper>
+          <SignUp />
         </Wrapper>
       ),
     }

@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import { message, Steps, theme, Form as AntdForm } from "antd";
 
 function Form() {
-  const [form] = AntdForm.useForm(); // Form instance to handle form data
+  const [form] = AntdForm.useForm(); 
   const [current, setCurrent] = useState(0);
-  const [location, setLocation] = useState(""); // State to hold location
+  const [location, setLocation] = useState(""); 
 
   const next = async () => {
     try {
@@ -114,7 +114,7 @@ function Form() {
     {
       content: (
         <div className="h-[55vh]">
-          <div className="text-white text-[40px] mx-[70px] mb-[30px]">
+          <div className="text-white text-[40px] mx-[70px] mb-[30px] leading-[40px]">
             Take this short quiz about your wishes{" "}
           </div>
           <div className="text-white text-[28px]  mx-[70px] leading-[30px]">
@@ -258,7 +258,7 @@ function Form() {
     {
       content: (
         <div className="h-[55vh]">
-          <div className="text-[#ffffff] text-[40px] font-normal leading-[40.6px] text-center mb-[20px] mx-[20px]">
+          <div className="text-[#ffffff] text-[40px] font-normal leading-[40px] text-center mb-[20px] mx-[20px]">
             Do you love when woman initiates sex?
           </div>
           <AntdForm.Item
@@ -415,7 +415,6 @@ function Form() {
   const contentStyle = {
     textAlign: "center",
     color: token.colorTextTertiary,
-    backgroundColor: token.colorFillAlter,
     marginTop: 16,
   };
 
@@ -424,6 +423,10 @@ function Form() {
       <Steps
         current={current}
         items={steps.map((_, index) => ({ key: index }))}
+        style={{ 
+          marginTop: 24,
+          marginBottom: 24,
+          }}
       />
       <AntdForm form={form} layout="vertical">
         <div style={contentStyle}>{steps[current].content}</div>
