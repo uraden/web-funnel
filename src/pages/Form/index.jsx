@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { message, Steps, theme, Form as AntdForm } from "antd";
+import { useNavigate } from "react-router-dom";
 
 function Form() {
   const [form] = AntdForm.useForm(); 
@@ -19,12 +20,15 @@ function Form() {
     setCurrent(current - 1);
   };
 
+  const navigate = useNavigate();
+
 
   const onFinish = () => {
     const values = form.getFieldsValue(true);
 
     console.log("Form values:", values);
-    message.success("Processing complete!");
+    message.success("Successfully submitted");
+    navigate("/signUp");
   };
 
   const steps = [
@@ -378,6 +382,7 @@ function Form() {
                     form.setFieldValue("3some", option);
                     // finish the form and submit
                     onFinish();
+
                   }}
                 >
                   {option}
@@ -407,8 +412,6 @@ function Form() {
       fetchLocation();
     }
   }, [current, form]);
-
-
 
   const { token } = theme.useToken();
 

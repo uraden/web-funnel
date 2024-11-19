@@ -107,3 +107,7 @@ border: 1px solid #D944BE;
 .start-btn-dark {
  background-color: #4F4F4F !important;
 }
+
+.ant-message-success .anticon {
+  color: #E964C4 !important;
+}

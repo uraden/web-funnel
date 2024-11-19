@@ -2,9 +2,8 @@ import './App.css'
 import {ConfigProvider} from 'antd';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Wrapper from "./layout/index";
-import Home from "./pages/Home/index";
-import Form from "./pages/Form/index";
-import SignUp from './pages/SignUp';
+import { Home, Form, SignUp, Carousel } from './pages';
+
 
 function App() {  
   const router = createBrowserRouter([
@@ -25,10 +24,18 @@ function App() {
       ),
     },
     {
-      path: "/signup",
+      path: "/signUp",
       element: (
         <Wrapper>
           <SignUp />
+        </Wrapper>
+      ),
+    },
+    {
+      path: "/users",
+      element: (
+        <Wrapper>
+          <Carousel />
         </Wrapper>
       ),
     }
@@ -39,7 +46,8 @@ function App() {
       <ConfigProvider 
         theme={{
           token: {
-            colorPrimary: "#E964C4"
+            colorPrimary: "#E964C4",
+            colorSuccess: "#E964C4"
           }
         }}
       >

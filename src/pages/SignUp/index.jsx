@@ -2,12 +2,14 @@ import { useState } from "react";
 import { Form } from "antd";
 import Lottie from "lottie-react";
 import spin from "../../../public/images/spin.json";
+import { useNavigate } from "react-router-dom";
 
 function SignUp() {
   const [form] = Form.useForm();
   const [isEmailValid, setIsEmailValid] = useState(false);
   const [email, setEmail] = useState("");
 
+  const navigate = useNavigate();
   const handleEmailChange = (e) => {
     const emailValue = e.target.value;
     setEmail(emailValue);
@@ -19,6 +21,7 @@ function SignUp() {
 
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
+    navigate("/users");
   };
 
   return (
