@@ -1,4 +1,8 @@
+import { useNavigate } from "react-router-dom";
+
 function Payment() {
+
+  const navigate = useNavigate();
   return (
     <div className="mt-[20px]">
       <div className="text-white text-[20px] flex items-center justify-end backdrop-blur-sm bg-white/30 px-[20px] py-[2px] rounded-[10px] mx-[19px]">
@@ -57,6 +61,9 @@ function Payment() {
         <div className="text-white"> View other plans</div>
         <div className="btn">
         <button
+          onClick={
+            navigate('paymentMethod')
+          }
           type="primary"
           className="bg-[#e98dcf] text-[#FFFFFF] text-[18px] leading-[21px] font-bold py-[20px] px-[19px] mt-[20px] rounded-[40px] w-[402px] start-btn"
         >

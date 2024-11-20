@@ -103,7 +103,7 @@ function Carousel() {
                     <div className="text-[16px]">1.2 miles away</div>
                   </div>
                   <div>
-                    <p className="text-[16px] bg-[#9d6fff] px-[10px] rounded-[15px] mt-[5px]">Likes hiking</p>
+                    <p className="text-[16px] bg-[#9d6fff] px-[10px] rounded-[15px] mt-[5px]">Likes football</p>
                   </div>
                 </div>
               </div>
@@ -157,7 +157,7 @@ function Carousel() {
                     <div className="text-[16px]">1.2 miles away</div>
                   </div>
                   <div>
-                    <p className="text-[16px] bg-[#9d6fff] px-[10px] rounded-[15px] mt-[5px]">Likes hiking</p>
+                    <p className="text-[16px] bg-[#9d6fff] px-[10px] rounded-[15px] mt-[5px]">Likes Clubbing</p>
                   </div>
                 </div>
               </div>

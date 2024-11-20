@@ -23,7 +23,7 @@ function SignUp() {
         Find an ideal sex partner sharing your desires{" "}
       </div>
       <div className="w-[225px] py-[8px] px-[19px] text-center text-[#FFFFFF] text-[18px] leading-[21px] font-bold backdrop-blur-sm bg-white/50 rounded-[40px]">
-        Our community has over <span className="text-[#e98dcf]">1M</span> hot
+        Our community has over <span className="text-[#e31aaa]">1M</span> hot
         people
       </div>
       <div>
