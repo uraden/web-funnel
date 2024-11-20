@@ -61,9 +61,7 @@ function Payment() {
         <div className="text-white"> View other plans</div>
         <div className="btn">
         <button
-          onClick={
-            navigate('paymentMethod')
-          }
+            onClick={() => navigate("/paymentMethod")}
           type="primary"
           className="bg-[#e98dcf] text-[#FFFFFF] text-[18px] leading-[21px] font-bold py-[20px] px-[19px] mt-[20px] rounded-[40px] w-[402px] start-btn"
         >
