@@ -111,3 +111,7 @@ border: 1px solid #D944BE;
 .ant-message-success .anticon {
   color: #E964C4 !important;
 }
+
+.pin {
+  fill: pink !important;
+}
