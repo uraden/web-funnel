@@ -59,16 +59,18 @@ function PaymentMethod() {
     if (validateForm()) {
       console.log("Form Values:", formData);
       message.success("Payment processed successfully!");
+      setFormData({
+        name: "",
+        cardNumber: "",
+        expiryDate: null,
+        cvv: "",
+      });
+      setIsModalOpen(false);
     }
 
-    setIsModalOpen(false);
     
-    setFormData({
-      name: "",
-      cardNumber: "",
-      expiryDate: null,
-      cvv: "",
-    });
+    
+    
   };
 
   return (
