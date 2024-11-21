@@ -380,9 +380,7 @@ function Form() {
                   }`}
                   onClick={() => {
                     form.setFieldValue("3some", option);
-                    // finish the form and submit
                     onFinish();
-
                   }}
                 >
                   {option}

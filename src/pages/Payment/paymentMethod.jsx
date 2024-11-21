@@ -66,7 +66,7 @@ function PaymentMethod() {
     e.preventDefault();
     if (validateForm()) {
       message.success("Payment processed successfully!");
-      setIsAnimationVisible(true); // Show Lottie animation
+      setIsAnimationVisible(true);
       setTimeout(() => {
         navigate("/confirmation"); 
       }, 3000); 
