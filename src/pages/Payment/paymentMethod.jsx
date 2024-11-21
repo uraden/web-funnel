@@ -204,7 +204,13 @@ function PaymentMethod() {
               className="input-field"
               name="name"
               value={formData.name}
-              onChange={handleInputChange}
+              onChange={(e) => {
+    const input = e.target.value.replace(/\s+/g, ''); // Remove all spaces
+    if (/^\d*$/.test(input) && input.length <= 16) { // Allow only digits and max length of 16
+      const formattedInput = input.replace(/(.{4})/g, '$1 ').trim(); // Add space after every 4 digits
+      handleInputChange({ target: { name: 'name', value: formattedInput } }); // Pass formatted value to handler
+    }
+  }}
             />
             <div className="card-input-wrapper">
               <input
@@ -227,7 +233,7 @@ function PaymentMethod() {
                 }}
                 inputStyle={{
                   "::placeholder": {
-                    color: "#fff", // Sets the placeholder color
+                    color: "#fff",
                   },
                 }}
                 format={{
