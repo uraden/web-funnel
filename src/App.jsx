@@ -2,7 +2,7 @@ import './App.css'
 import {ConfigProvider} from 'antd';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Wrapper from "./layout/index";
-import { Home, Form, SignUp, Carousel, Payment, PaymentMethod } from './pages';
+import { Home, Form, SignUp, Carousel, Payment, PaymentMethod, Confirmation } from './pages';
 
 
 function App() {  
@@ -51,6 +51,14 @@ function App() {
       path: "/paymentMethod",
       element: (
         <PaymentMethod />
+      )
+    },
+    {
+      path: "/confirmation",
+      element: (
+        <Wrapper>
+          <Confirmation />
+        </Wrapper>
       )
     }
   ]);

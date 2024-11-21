@@ -1,15 +1,22 @@
 import { useState } from "react";
 import { Modal, message, DatePicker } from "antd";
 import moment from "moment";
+import success from "../../../public/images/success.json";
+import Lottie from "lottie-react";
+import { useNavigate } from "react-router-dom";
+
 
 function PaymentMethod() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isAnimationVisible, setIsAnimationVisible] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     cardNumber: "",
     expiryDate: null,
     cvv: "",
   });
+
+  const navigate = useNavigate();
 
   const showModal = () => {
     setIsModalOpen(true);
@@ -36,7 +43,8 @@ function PaymentMethod() {
       return false;
     }
 
-    if (!/^\d{16}$/.test(cardNumber)) {
+    const plainCardNumber = cardNumber.replace(/\s+/g, '');
+    if (!/^\d{16}$/.test(plainCardNumber)) {
       message.error("Card number must be exactly 16 digits.");
       return false;
     }
@@ -57,25 +65,24 @@ function PaymentMethod() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm()) {
-      console.log("Form Values:", formData);
       message.success("Payment processed successfully!");
-      setFormData({
-        name: "",
-        cardNumber: "",
-        expiryDate: null,
-        cvv: "",
-      });
-      setIsModalOpen(false);
+      setIsAnimationVisible(true); // Show Lottie animation
+      setTimeout(() => {
+        navigate("/confirmation"); 
+      }, 3000); 
     }
-
-    
-    
-    
   };
 
   return (
     <div className="h-screen flex flex-col">
-      <div className="flex-1 ">
+    {
+      isAnimationVisible ?  (
+        <div className="flex justify-center items-center h-screen">
+          <Lottie animationData={success} loop={false} />
+        </div>
+      ) : (<>
+
+        <div className="flex-1 ">
         <div className=" flex justify-center">
           <img src="/images/logo.svg" className="mr-[10px]" />
           <div className="text-white text-[30px] font-bold tracking-wide">
@@ -204,13 +211,7 @@ function PaymentMethod() {
               className="input-field"
               name="name"
               value={formData.name}
-              onChange={(e) => {
-    const input = e.target.value.replace(/\s+/g, ''); // Remove all spaces
-    if (/^\d*$/.test(input) && input.length <= 16) { // Allow only digits and max length of 16
-      const formattedInput = input.replace(/(.{4})/g, '$1 ').trim(); // Add space after every 4 digits
-      handleInputChange({ target: { name: 'name', value: formattedInput } }); // Pass formatted value to handler
-    }
-  }}
+              onChange={handleInputChange}
             />
             <div className="card-input-wrapper">
               <input
@@ -219,7 +220,13 @@ function PaymentMethod() {
                 className="input-field card-number"
                 name="cardNumber"
                 value={formData.cardNumber}
-                onChange={handleInputChange}
+                onChange={(e)=> {
+                  const input = e.target.value.replace(/\s+/g, '');
+                  if (/^\d*$/.test(input) && input.length <= 16) {
+                    const formattedInput = input.replace(/(.{4})/g, '$1 ').trim();
+                    handleInputChange({ target: { name: 'cardNumber', value: formattedInput } });
+                  }
+                }}
               />
               <span className="icon">
                 <img src="/images/card.svg" alt="Card Icon" />
@@ -266,6 +273,10 @@ function PaymentMethod() {
           </form>
         </div>
       </Modal>
+
+      </>)
+    }
+      
     </div>
   );
 }
