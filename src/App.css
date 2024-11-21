@@ -115,3 +115,100 @@ border: 1px solid #D944BE;
 .pin {
   fill: pink !important;
 }
+
+.ant-modal-content {
+  background-color: #1B1726 !important;
+}
+
+.ant-modal-close-x {
+  color: #FFFFFF !important;
+}
+
+.custom-modal .ant-modal-content {
+  background-color: #1B1726 !important;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.modal-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.card-icons {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.card-icons img {
+  max-height: 30px;
+}
+
+.payment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: none;
+  background-color: #292641;
+  color: #fff;
+  font-size: 14px;
+}
+
+.card-input-wrapper {
+  position: relative;
+}
+
+.card-number {
+  padding-right: 40px;
+}
+
+.card-input-wrapper .icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.card-details {
+  display: flex;
+  gap: 15px;
+}
+
+.subscription-info {
+  font-size: 12px;
+  color: #aaa;
+  text-align: center;
+}
+
+.purchase-btn {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #4443C4;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+}
+
+.ant-picker {
+  background-color: #292641 !important;
+  border: none !important;
+  color: #fff !important;
+}
+
+.ant-picker-input {
+  color: #fff !important;
+}

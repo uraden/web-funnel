@@ -1,4 +1,76 @@
+import { useState } from "react";
+import { Modal, message, DatePicker } from "antd";
+import moment from "moment";
+
 function PaymentMethod() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    cardNumber: "",
+    expiryDate: null,
+    cvv: "",
+  });
+
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleDateChange = (date) => {
+    setFormData({ ...formData, expiryDate: date });
+  };
+
+  const validateForm = () => {
+    const { name, cardNumber, expiryDate, cvc } = formData;
+
+    if (!name || !/^[a-zA-Z\s]+$/.test(name)) {
+      message.error("Card name should be a valid string.");
+      return false;
+    }
+
+    if (!/^\d{16}$/.test(cardNumber)) {
+      message.error("Card number must be exactly 16 digits.");
+      return false;
+    }
+
+    if (!expiryDate || !expiryDate.isAfter(moment())) {
+      message.error("Expiry date must be a future date.");
+      return false;
+    }
+
+    if (!/^\d{3}$/.test(cvc)) {
+      message.error("CVC must be exactly 3 digits.");
+      return false;
+    }
+
+    return true;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (validateForm()) {
+      console.log("Form Values:", formData);
+      message.success("Payment processed successfully!");
+    }
+
+    setIsModalOpen(false);
+    
+    setFormData({
+      name: "",
+      cardNumber: "",
+      expiryDate: null,
+      cvv: "",
+    });
+  };
+
   return (
     <div className="h-screen flex flex-col">
       <div className="flex-1 ">
@@ -81,7 +153,10 @@ function PaymentMethod() {
           Total due today: $69.99
         </div>
 
-        <div className="mt-[10px] bg-[#056FDD] text-white font-600] text-[20px] flex justify-center items-center py-[10px] rounded-[25px] mx-[40px]">
+        <div
+          className="mt-[10px] bg-[#056FDD] text-white font-600] text-[20px] flex justify-center items-center py-[10px] rounded-[25px] mx-[40px] hover:bg-[#0A5FBD] cursor-pointer"
+          onClick={showModal}
+        >
           <img src="/images/card.svg" className="w-[20px] h-[20px] mr-[10px]" />
           <p> Debit / Credit Card </p>
         </div>
@@ -93,8 +168,14 @@ function PaymentMethod() {
         </div>
 
         <div className="mt-[10px] bg-[#FFC700] text-white font-[600] text-[20px] flex justify-center items-center py-[10px] rounded-[25px] mx-[40px]">
-          <img src="/images/paypal.svg" className="w-[20px] h-[20px] mr-[10px]" />
-          <p className="font-[600] text-[#2790C3]"> <span className="text-[#27346A]">Pay</span>Pal </p>
+          <img
+            src="/images/paypal.svg"
+            className="w-[20px] h-[20px] mr-[10px]"
+          />
+          <p className="font-[600] text-[#2790C3]">
+            {" "}
+            <span className="text-[#27346A]">Pay</span>Pal{" "}
+          </p>
         </div>
 
         <div className="mt-[10px] bg-[#FFFFFF] text-white text-[20px] flex justify-center items-center py-[10px] rounded-[25px] mx-[40px]">
@@ -103,12 +184,82 @@ function PaymentMethod() {
 
         <div className="mt-[10px] bg-[#EEEEEE] text-white font-[600] text-[20px] flex justify-center items-center py-[10px] rounded-[25px] mx-[40px]">
           <img src="/images/google.svg" className="" />
-          
         </div>
       </div>
+
+      <Modal
+        open={isModalOpen}
+        footer={null}
+        onCancel={handleCancel}
+        className="custom-modal"
+      >
+        <div className="modal-content">
+          <h2 className="modal-title">Credit / Debit Card</h2>
+          <form className="payment-form" onSubmit={handleSubmit}>
+            <input
+              type="text"
+              placeholder="Name on Card"
+              className="input-field"
+              name="name"
+              value={formData.name}
+              onChange={handleInputChange}
+            />
+            <div className="card-input-wrapper">
+              <input
+                type="text"
+                placeholder="Card number"
+                className="input-field card-number"
+                name="cardNumber"
+                value={formData.cardNumber}
+                onChange={handleInputChange}
+              />
+              <span className="icon">
+                <img src="/images/card.svg" alt="Card Icon" />
+              </span>
+            </div>
+            <div className="card-details">
+              <DatePicker
+                placeholder="MM/YY"
+                style={{
+                  color: "#fff",
+                }}
+                inputStyle={{
+                  "::placeholder": {
+                    color: "#fff", // Sets the placeholder color
+                  },
+                }}
+                format={{
+                  format: "MM/YY",
+                  type: "mask",
+                }}
+                id="calendar"
+                onChange={handleDateChange}
+                disabledDate={(current) =>
+                  current && current < moment().endOf("day")
+                }
+              />
+              <input
+                type="text"
+                placeholder="CVV"
+                className="input-field"
+                name="cvc"
+                value={formData.cvc}
+                onChange={handleInputChange}
+              />
+            </div>
+            <p className="subscription-info">
+              You will be charged $69.99 for your subscription. <br />
+              You can cancel anytime to avoid being charged for the next
+              payment.
+            </p>
+            <button type="submit" className="purchase-btn">
+              Purchase
+            </button>
+          </form>
+        </div>
+      </Modal>
     </div>
   );
 }
 
 export default PaymentMethod;
-
