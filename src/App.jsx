@@ -60,6 +60,14 @@ function App() {
           <Confirmation />
         </Wrapper>
       )
+    }, 
+    {
+      path: "*",
+      element: (
+        <Wrapper>
+          <Home />
+        </Wrapper>
+      ),
     }
   ]);
 
